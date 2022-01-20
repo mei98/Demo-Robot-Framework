@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.2 (Python 3.8.10 on win32)" generated="20220120 14:51:55.280">
+<suite id="s1" name="Demo robot01" source="C:\Users\meimei\eclipse-workspace\Demo_robot01">
+<suite id="s1-s1" name="Test" source="C:\Users\meimei\eclipse-workspace\Demo_robot01\Test">
+<suite id="s1-s1-s1" name="Demo01" source="C:\Users\meimei\eclipse-workspace\Demo_robot01\Test\Demo01.robot">
+<test id="s1-s1-s1-t1" name="Test Popout Window">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>content &gt; div.post &gt; p:nth-child(4) &gt; input[type=button]:nth-child(1)</arg>
+</arguments>
+<assign>
+<var>${css}</var>
+</assign>
+<msg timestamp="20220120 14:51:55.836" level="INFO">${css} = content &gt; div.post &gt; p:nth-child(4) &gt; input[type=button]:nth-child(1)</msg>
+<status status="PASS" starttime="20220120 14:51:55.835" endtime="20220120 14:51:55.836"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>A New Popup Window</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20220120 14:51:55.837" level="INFO">${text} = A New Popup Window</msg>
+<status status="PASS" starttime="20220120 14:51:55.837" endtime="20220120 14:51:55.837"></status>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>&amp;{LINK_LIST}[newtab]</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20220120 14:51:55.838" level="INFO">Opening browser 'chrome' to base url 'https://www.encodedna.com/javascript/demo/open-new-window-using-javascript-method.htm'.</msg>
+<status status="PASS" starttime="20220120 14:51:55.837" endtime="20220120 14:52:02.152"></status>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<doc>Scrolls an element identified by ``locator`` into view.</doc>
+<arguments>
+<arg>css:#content &gt; div.post &gt; p:nth-child(8) &gt; input[type=button]</arg>
+</arguments>
+<status status="PASS" starttime="20220120 14:52:02.153" endtime="20220120 14:52:02.470"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>css=#${css}</arg>
+</arguments>
+<msg timestamp="20220120 14:52:02.470" level="INFO">Clicking button 'css=#content &gt; div.post &gt; p:nth-child(4) &gt; input[type=button]:nth-child(1)'.</msg>
+<status status="PASS" starttime="20220120 14:52:02.470" endtime="20220120 14:52:02.951"></status>
+</kw>
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<doc>Return all current window handles as a list.</doc>
+<assign>
+<var>@{wins}</var>
+</assign>
+<msg timestamp="20220120 14:52:02.965" level="INFO">@{wins} = [ CDwindow-576EC6441C408C18A015760C27E27A11 | CDwindow-95C0A479D6E95098AC03B506DB02E028 ]</msg>
+<status status="PASS" starttime="20220120 14:52:02.951" endtime="20220120 14:52:02.966"></status>
+</kw>
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>Selects browser window matching ``locator``.</doc>
+<arguments>
+<arg>@{wins}[1]</arg>
+</arguments>
+<status status="PASS" starttime="20220120 14:52:02.966" endtime="20220120 14:52:03.045"></status>
+</kw>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of current page.</doc>
+<assign>
+<var>${title_new}</var>
+</assign>
+<msg timestamp="20220120 14:52:04.880" level="INFO">${title_new} = Open a New Window using JavaScript window.open() - Demo</msg>
+<status status="PASS" starttime="20220120 14:52:03.048" endtime="20220120 14:52:04.881"></status>
+</kw>
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>Selects browser window matching ``locator``.</doc>
+<arguments>
+<arg>@{wins}[0]</arg>
+</arguments>
+<status status="PASS" starttime="20220120 14:52:04.881" endtime="20220120 14:52:04.897"></status>
+</kw>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of current page.</doc>
+<assign>
+<var>${title_cur}</var>
+</assign>
+<msg timestamp="20220120 14:52:04.902" level="INFO">${title_cur} = Open a New Browser Window using JavaScript - Demo</msg>
+<status status="PASS" starttime="20220120 14:52:04.898" endtime="20220120 14:52:04.903"></status>
+</kw>
+<kw name="Should Not Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are equal after converting them to strings.</doc>
+<arguments>
+<arg>${title_cur}</arg>
+<arg>${title_new}</arg>
+<arg>title must be different</arg>
+</arguments>
+<status status="PASS" starttime="20220120 14:52:04.903" endtime="20220120 14:52:04.904"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220120 14:52:04.904" endtime="20220120 14:52:07.527"></status>
+</kw>
+<status status="PASS" starttime="20220120 14:51:55.834" endtime="20220120 14:52:07.527" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20220120 14:51:55.352" endtime="20220120 14:52:07.528"></status>
+</suite>
+<status status="PASS" starttime="20220120 14:51:55.350" endtime="20220120 14:52:07.529"></status>
+</suite>
+<status status="PASS" starttime="20220120 14:51:55.333" endtime="20220120 14:52:07.531"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Demo robot01">Demo robot01</stat>
+<stat pass="1" fail="0" id="s1-s1" name="Test">Demo robot01.Test</stat>
+<stat pass="1" fail="0" id="s1-s1-s1" name="Demo01">Demo robot01.Test.Demo01</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
