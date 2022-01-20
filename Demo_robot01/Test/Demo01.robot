@@ -1,6 +1,6 @@
 *** Settings ***
-# Library    Selenium2Library
-Library    SeleniumLibrary
+Library    Selenium2Library
+# Library    SeleniumLibrary
 Library    RequestsLibrary
 
 Test Teardown    Run Keywords        
@@ -9,7 +9,9 @@ Test Teardown    Run Keywords
 
 *** Variables ***
 
-&{LINK_LIST}        upload_file=https://www.w3schools.com/howto/howto_html_file_upload_button.asp    iframe=https://www.w3schools.com/html/html_iframe.asp    newtab_popout=https://www.encodedna.com/javascript/demo/open-new-window-using-javascript-method.htm
+&{LINK_LIST}        upload_file=https://www.w3schools.com/howto/howto_html_file_upload_button.asp
+...                 iframe=https://www.w3schools.com/html/html_iframe.asp
+...                 newtab_popout=https://www.encodedna.com/javascript/demo/open-new-window-using-javascript-method.htm
 &{FILE_ADDRESS}     fileaddress=C://Users/meimei/Desktop/background/Eren.jpg
 ${EXPECTED_NAME}    Eren.jpg
 ${MUST_SCROLL}      content > div.post > p:nth-child(8) > input[type=button]
