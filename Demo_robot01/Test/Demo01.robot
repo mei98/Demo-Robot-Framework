@@ -2,6 +2,12 @@
 # Library    Selenium2Library
 Library    SeleniumLibrary
 Library    RequestsLibrary
+
+Test Teardown    Run Keywords        
+...    Run Keyword If Timeout Occurred    Log    Timeout occurs
+...    AND    Close Browser
+       
+
 *** Variables ***
 &{LINK_LIST}    upload_file=https://www.w3schools.com/howto/howto_html_file_upload_button.asp    iframe=https://www.w3schools.com/html/html_iframe.asp    newtab=https://www.encodedna.com/javascript/demo/open-new-window-using-javascript-method.htm
 &{FILE_ADDRESS}   fileaddress=C://Users/meimei/Desktop/background/Eren.jpg
@@ -24,15 +30,12 @@ Test Any API
     # \    Run Keyword If    ${response.status_code} == 200    Log    Pass at ${location}
     # \    ...    ELSE    Log    Pass at ${location}
         
-    Close Browser    
 
 Test Upload File
     Open Browser    &{LINK_LIST}[upload_file]    chrome
     Set Browser Implicit Wait    5
     Input Text      id=myFile    &{FILE_ADDRESS}[fileaddress]
-    Sleep           2 
     ${filename}=    Get Element Attribute    id=myFile    value      
-    Close Browser
     Should Contain    ${filename}    Eren.jpg      
     
 
@@ -44,7 +47,6 @@ Test Iframe
     Current Frame Should Not Contain        ${text}   
     Unselect Frame
     Current Frame Should Contain    ${text}    
-    Close Browser
     
 Test New Tab
     ${css}=    Set Variable    content > div.post > p:nth-child(4) > input[type=button]:nth-child(2)
@@ -53,10 +55,7 @@ Test New Tab
     Click Button    css=#${css}    
     @{tabs}=    Get Window Handles
     Select Window    @{tabs}[1]
-    Sleep    2
     Select Window    @{tabs}[0]
-    Sleep    2
-    Close Browser
 
 Test Popout Window
     ${css}=    Set Variable    content > div.post > p:nth-child(4) > input[type=button]:nth-child(1)
@@ -70,4 +69,3 @@ Test Popout Window
     Select Window    @{wins}[0]
     ${title_cur}=    Get Title
     Should Not Be Equal As Strings    ${title_cur}    ${title_new}    title must be different
-    Close Browser
